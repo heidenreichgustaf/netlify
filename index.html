@@ -3,100 +3,248 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101c2c">
+<meta name="theme-color" content="#ffe14a">
 <title>RentenRadar – Rente? Betrifft auch dich!</title>
 <style>
-:root{--bg:#f5f3ed;--paper:#fffefa;--ink:#202c35;--muted:#68716f;--navy:#172a35;--navy2:#263f49;--teal:#187f73;--lime:#e6c86e;--line:#e3e0d6;--shadow:0 18px 55px #12233a10;--radius:18px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}.topbar{background:var(--navy);color:#dce7f4;font-size:.88rem}.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:10px 0}.topbar strong{color:var(--lime)}header{position:sticky;top:0;z-index:20;background:#ffffffeb;backdrop-filter:blur(16px);border-bottom:1px solid #e7edf4}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:11px;font-weight:850;font-size:1.08rem;letter-spacing:-.04em}.brandmark{width:38px;height:38px;border-radius:13px;background:var(--teal);display:grid;place-items:center;color:var(--navy);font-size:1.25rem;box-shadow:inset 0 -4px #00000012}.brand span small{display:block;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:750}.navlinks{display:flex;gap:26px;align-items:center;color:#42546a;font-size:.93rem;font-weight:650}.navlinks a:hover{color:#078f83}.navcta,.btn{border:0;border-radius:999px;background:var(--navy);color:#fff;padding:13px 19px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:9px;transition:.2s;box-shadow:0 6px 15px #101c2c15}.navcta:hover,.btn:hover{transform:translateY(-2px);background:#203751}.btn.primary{background:var(--teal);color:#082b32;box-shadow:0 8px 20px #10b7a42a}.btn.primary:hover{background:#37d0bd}.btn.ghost{background:#ffffff12;color:#fff;border:1px solid #ffffff3a;box-shadow:none}.menu-toggle{display:none;background:none;border:0;font-size:1.5rem}.hero{background:radial-gradient(circle at 82% 15%,#244968 0,transparent 30%),linear-gradient(135deg,var(--navy),#132a40 70%,#163d4c);color:#fff;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:430px;height:430px;border:1px solid #ffffff14;border-radius:50%;right:-80px;bottom:-240px;box-shadow:0 0 0 45px #ffffff05,0 0 0 90px #ffffff04}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:center;padding:82px 0 88px}.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;font-weight:850;text-transform:uppercase;letter-spacing:.13em;color:#087e75;background:#dcfaf4;padding:8px 12px;border-radius:999px}.hero .eyebrow{background:#ffffff12;color:var(--lime);border:1px solid #ffffff20}.hero h1{font-size:clamp(2.65rem,5.5vw,5rem);line-height:1.02;letter-spacing:-.065em;margin:22px 0}.hero h1 em{font-style:normal;color:var(--lime)}.hero p{font-size:1.12rem;color:#c2d0df;max-width:610px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:28px;color:#c1cfdb;font-size:.85rem}.trust span{display:flex;align-items:center;gap:7px}.hero-card{background:#f7fafc;color:var(--ink);padding:26px;border-radius:28px;box-shadow:0 30px 70px #0003;transform:rotate(1.5deg)}.hero-card-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.hero-card-head small{color:var(--muted);font-weight:750}.live{font-size:.72rem;background:#ddf8ed;color:#137858;padding:6px 9px;border-radius:999px;font-weight:800}.hero-card h3{font-size:1.15rem;margin:20px 0 4px}.big-number{font-size:2.9rem;font-weight:900;letter-spacing:-.06em;color:#10253a}.big-number small{font-size:1rem;letter-spacing:0;color:var(--muted)}.chart{height:125px;display:flex;align-items:end;gap:9px;margin:22px 0 12px;border-bottom:1px solid var(--line);padding:0 8px}.bar{flex:1;background:linear-gradient(180deg,#19c5ad,#0b897f);border-radius:8px 8px 2px 2px;position:relative;min-width:12px}.bar:nth-child(2n){opacity:.68}.chart-labels{display:flex;justify-content:space-between;color:var(--muted);font-size:.72rem}.card-note{background:#eaf8f5;padding:13px 14px;border-radius:14px;margin-top:20px;font-size:.84rem;color:#315b5a}.section{padding:82px 0}.section-head{max-width:680px;margin-bottom:34px}.section-head h2{font-size:clamp(2rem,4vw,3.25rem);letter-spacing:-.055em;line-height:1.08;margin:15px 0}.section-head p{color:var(--muted);font-size:1.05rem}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:25px;box-shadow:var(--shadow);transition:.22s}.feature:hover{transform:translateY(-5px);border-color:#b5e9e1}.icon{width:48px;height:48px;border-radius:15px;background:#e0f8f4;display:grid;place-items:center;font-size:1.4rem;margin-bottom:18px}.feature h3{margin:0 0 9px;font-size:1.14rem}.feature p{margin:0;color:var(--muted);font-size:.94rem}.text-link{display:inline-flex;gap:7px;margin-top:18px;color:#087e75;font-weight:800;font-size:.9rem}.calculator-section{background:#eaf0f6}.calculator{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:stretch}.calc-panel,.result-panel{border-radius:28px;padding:30px;background:#fff;box-shadow:var(--shadow)}.calc-panel h3,.result-panel h3{margin:0 0 7px;font-size:1.35rem}.subtle{color:var(--muted);font-size:.9rem}.field{margin:22px 0}.field-top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:9px;font-weight:750}.field output{color:#087e75;font-weight:850}.field input[type=range]{width:100%;accent-color:var(--teal)}.field input[type=number],.field select{width:100%;padding:13px 14px;border:1px solid #d9e3ed;border-radius:12px;background:#fbfcfe;color:var(--ink)}.range-ends{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}.result-panel{background:var(--navy);color:white;position:relative;overflow:hidden}.result-panel:after{content:"€";position:absolute;right:-7px;top:10px;font-size:12rem;font-weight:900;color:#ffffff07;line-height:1}.result-panel>*{position:relative;z-index:1}.result-panel .subtle{color:#b9c8d7}.result-number{font-size:clamp(2.4rem,5vw,4rem);font-weight:900;letter-spacing:-.06em;color:var(--lime);margin:22px 0 0}.result-number small{font-size:1rem;letter-spacing:0;color:#d3dfeb}.result-caption{color:#d1dce7;font-size:.87rem}.meter{height:12px;background:#ffffff1c;border-radius:999px;overflow:hidden;margin:14px 0 9px}.meter-fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--lime));border-radius:999px;transition:width .35s}.result-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:26px 0}.stat{padding:15px;background:#ffffff0d;border:1px solid #ffffff13;border-radius:15px}.stat small{display:block;color:#b8c9d9;font-size:.78rem}.stat strong{font-size:1.12rem}.disclaimer{font-size:.76rem;color:#b8c9d9;line-height:1.5;margin-top:20px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:steps}.step{padding:25px 22px;border-top:2px solid var(--line);position:relative}.step:before{counter-increment:steps;content:"0" counter(steps);display:block;color:#0b9e90;font-weight:900;font-size:1.5rem;margin-bottom:20px}.step h3{margin:0 0 8px}.step p{color:var(--muted);margin:0}.quiz-banner{background:var(--navy);color:white;border-radius:30px;padding:42px;display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center;position:relative;overflow:hidden}.quiz-banner:after{content:"€";position:absolute;right:140px;top:-75px;font-size:18rem;color:#ffffff07;font-weight:900;line-height:1}.quiz-banner>*{position:relative;z-index:1}.quiz-banner h2{font-size:clamp(1.8rem,4vw,3rem);line-height:1.1;letter-spacing:-.05em;margin:12px 0}.quiz-banner p{color:#c4d1df;max-width:650px;margin-bottom:0}.quiz-banner .btn{white-space:nowrap}.faq{max-width:850px}.faq-item{border-bottom:1px solid var(--line)}.faq-q{width:100%;border:0;background:none;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:15px;padding:21px 0;font-weight:800;color:var(--ink);font-size:1rem}.faq-q span:last-child{font-size:1.35rem;color:#078f83;transition:.2s}.faq-a{display:none;color:var(--muted);padding:0 35px 22px 0}.faq-item.open .faq-a{display:block}.faq-item.open .faq-q span:last-child{transform:rotate(45deg)}footer{background:#0b1522;color:#d4deea;padding:42px 0 26px}.footer-top{display:flex;justify-content:space-between;gap:30px;align-items:start;padding-bottom:28px;border-bottom:1px solid #ffffff18}.footer-brand p{color:#9eafc2;max-width:440px;font-size:.9rem}.footer-links{display:flex;gap:20px;flex-wrap:wrap;font-size:.88rem;color:#c0ccda}.footer-bottom{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;padding-top:20px;color:#91a2b5;font-size:.78rem}.sources{margin-top:28px;padding:24px 0 20px;border-top:1px solid #ffffff20;color:#c0ccda}.sources h3{margin:0 0 6px;color:#f7f4e9;font-size:1.05rem;letter-spacing:.01em}.sources p{margin:6px 0;font-size:.86rem}.sources ul{margin:12px 0 16px;padding-left:20px;display:grid;gap:7px;font-size:.86rem}.sources a{text-decoration:underline;text-decoration-color:#6b938c;text-underline-offset:3px}.sources a:hover{color:#e6c86e}.sources .ai-note{max-width:900px;color:#9fb0b6;font-size:.8rem;line-height:1.65}.pill{display:inline-flex;background:#edf4f8;border-radius:999px;padding:6px 10px;color:#50677d;font-size:.75rem;font-weight:800}.backtop{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border:0;border-radius:15px;background:var(--teal);color:var(--navy);font-size:1.2rem;font-weight:900;box-shadow:0 10px 28px #102b3a35;display:none;z-index:15}.backtop.show{display:block}
+:root{--ink:#111;--paper:#f3efe4;--y:#ffe14a;--r:#ff5a36;--b:#2f4bff;--bd:3px solid var(--ink);--sh:6px 6px 0 var(--ink);--hf:"Arial Black","Archivo Black",Impact,"Helvetica Neue",sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit}button,input,select{font:inherit;color:inherit}button{cursor:pointer}
+.wrap{width:min(1180px,calc(100% - 36px));margin:auto}
+h1,h2,h3{font-family:var(--hf);text-transform:uppercase;letter-spacing:-.02em;line-height:1.02;margin:0}
+.tag{display:inline-block;font:700 .74rem var(--mono);letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--y);padding:5px 10px}
+header{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:var(--bd)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
+.brand{font-family:var(--hf);text-decoration:none;font-size:1.25rem;display:flex;align-items:center;gap:10px;text-transform:uppercase}
+.dot{width:22px;height:22px;border:var(--bd);border-radius:50%;background:var(--r);position:relative;animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 #ff5a3688}100%{box-shadow:0 0 0 14px #ff5a3600}}
+.navlinks{display:flex;gap:6px}.navlinks a{font:700 .82rem var(--mono);text-transform:uppercase;text-decoration:none;padding:8px 12px;border:2px solid transparent}.navlinks a:hover{border-color:var(--ink);background:var(--y)}
+.menu-toggle{display:none;border:var(--bd);background:var(--y);width:44px;height:40px;font-size:1.3rem}
+.btn{display:inline-flex;align-items:center;gap:8px;border:var(--bd);background:#fff;padding:13px 20px;font:800 .95rem var(--mono);text-transform:uppercase;text-decoration:none;box-shadow:4px 4px 0 var(--ink);transition:.12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn.primary{background:var(--r)}.btn.ghost{background:var(--paper)}
+.hero{background:var(--y);border-bottom:var(--bd);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:60px 0 70px}
+.hero h1{font-size:clamp(3rem,8.4vw,7rem);margin:20px 0}.hero h1 span{background:var(--ink);color:var(--y);padding:0 .12em;display:inline-block;transform:rotate(-1.5deg)}
+.hero p{font-size:1.15rem;max-width:560px;font-weight:500}.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.radar-wrap{position:relative;max-width:430px;margin:auto;width:100%}
+.radar{aspect-ratio:1;border:var(--bd);border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 34px,#11111133 34px 36px),var(--paper);position:relative;overflow:hidden;box-shadow:10px 10px 0 var(--ink)}
+.radar:before{content:"";position:absolute;inset:0;background:conic-gradient(from 0deg,transparent 0 290deg,#ff5a36dd 358deg,var(--ink) 360deg);animation:sweep 4.5s linear infinite}
+.radar:after{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:#11111140;box-shadow:calc(var(--s,1px)*0) 0 0 0 #0000}
+@keyframes sweep{to{transform:rotate(360deg)}}
+.chip{position:absolute;background:#fff;border:var(--bd);padding:7px 11px;font:800 .8rem var(--mono);box-shadow:4px 4px 0 var(--ink);white-space:nowrap}.chip b{font-family:var(--hf);font-size:1.25rem;display:block;line-height:1}
+.c1{left:-18px;top:12%;transform:rotate(-4deg)}.c2{right:-14px;top:30%;transform:rotate(3deg);background:var(--b);color:#fff}.c3{left:-8px;bottom:14%;transform:rotate(2deg);background:var(--r)}.c4{right:4%;bottom:-8px;transform:rotate(-3deg)}
+.ticker{background:var(--ink);color:var(--y);overflow:hidden;border-bottom:var(--bd);white-space:nowrap}
+.ticker div{display:inline-flex;gap:46px;padding:12px 0;animation:tick 28s linear infinite;font:700 .85rem var(--mono);text-transform:uppercase}
+@keyframes tick{to{transform:translateX(-50%)}}
+.section{padding:84px 0;border-bottom:var(--bd)}.section.alt{background:#fff}
+.sh{max-width:720px;margin-bottom:38px}.sh h2{font-size:clamp(2rem,5vw,3.8rem);margin:14px 0}.sh p{font-size:1.08rem;margin:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border:var(--bd);padding:26px;box-shadow:var(--sh);transition:.15s;text-align:left;display:block;width:100%}
+.alt .card{background:var(--paper)}
+.card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink)}
+.num{font-family:var(--hf);font-size:3.4rem;line-height:1;color:var(--r);-webkit-text-stroke:2px var(--ink);margin-bottom:12px}
+.card h3{font-size:1.25rem;margin-bottom:10px}.card p{margin:0}.ico{font-size:2rem;margin-bottom:12px}
+.fact-card .text-link{display:inline-block;margin-top:14px;font:800 .8rem var(--mono);text-transform:uppercase;background:var(--y);border:2px solid var(--ink);padding:4px 9px}
+.calc{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
+.panel{border:var(--bd);background:#fff;padding:28px;box-shadow:var(--sh)}
+.panel h3{font-size:1.4rem;margin-bottom:6px}.sub{font-size:.9rem;opacity:.75;margin:0 0 6px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
+.f{margin:16px 0 0}.f.full{grid-column:1/-1}
+.ft{display:flex;justify-content:space-between;gap:10px;font:700 .8rem var(--mono);text-transform:uppercase;margin-bottom:6px}.ft output{background:var(--y);border:2px solid var(--ink);padding:0 7px;white-space:nowrap}
+input[type=range]{width:100%;accent-color:var(--r);height:22px}
+input[type=number]{width:100%;padding:10px 12px;border:var(--bd);background:var(--paper);font:700 1rem var(--mono)}
+details{margin-top:22px;border:var(--bd);background:var(--paper);padding:0 16px}summary{cursor:pointer;font:800 .85rem var(--mono);text-transform:uppercase;padding:14px 0}details[open] summary{border-bottom:2px dashed var(--ink);margin-bottom:6px}details .f{margin-bottom:14px}
+.res{background:var(--ink);color:var(--paper);position:sticky;top:84px}
+.res .tag{background:var(--y);color:var(--ink)}.res h3{margin:16px 0 4px}
+.big{font-family:var(--hf);font-size:clamp(2.6rem,6vw,4.4rem);color:var(--y);line-height:1;margin:14px 0 4px}.big small{font:600 .9rem var(--mono);color:var(--paper)}
+.meter{height:16px;border:2px solid var(--paper);margin:14px 0 6px}.meter i{display:block;height:100%;width:0;background:var(--r);transition:width .3s}
+.cap{font-size:.84rem;opacity:.85;margin:0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.stat{border:2px solid var(--paper);padding:11px}.stat small{display:block;font:600 .7rem var(--mono);text-transform:uppercase;opacity:.75}.stat strong{font-size:1.1rem}
+.warn{display:none;background:var(--r);color:var(--ink);border:2px solid var(--paper);padding:9px 12px;font-size:.85rem;font-weight:700;margin-top:12px}.warn.on{display:block}
+.disc{font-size:.74rem;opacity:.7;margin:16px 0 0}
+.quiz{background:var(--b);color:#fff;border:var(--bd);box-shadow:10px 10px 0 var(--ink);padding:40px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-top:50px}
+.quiz h2{font-size:clamp(1.8rem,4.2vw,3rem);margin:12px 0}.quiz p{margin:0;max-width:600px}.quiz .tag{background:var(--y);color:var(--ink)}
+.faq{max-width:860px}.fi{border:var(--bd);background:#fff;margin-bottom:14px}.fq{width:100%;border:0;background:none;text-align:left;display:flex;justify-content:space-between;gap:12px;padding:18px 20px;font-weight:800;font-size:1.02rem}.fq span:last-child{font:800 1.4rem var(--mono);transition:.2s}.fa{display:none;padding:0 20px 20px}.fi.open{box-shadow:var(--sh)}.fi.open .fa{display:block}.fi.open .fq{background:var(--y)}.fi.open .fq span:last-child{transform:rotate(45deg)}
+footer{background:var(--ink);color:var(--paper);padding:56px 0 26px}footer a{color:var(--y)}
+.ft-top{display:grid;grid-template-columns:1fr 1.4fr;gap:40px}.ft-top h3{color:var(--y);font-size:1.5rem;margin-bottom:10px}
+.src h3{font-size:1.3rem;margin-bottom:10px}.src ul{margin:0 0 14px;padding-left:18px;display:grid;gap:8px;font-size:.92rem}
+.badge{display:inline-block;background:var(--y);color:var(--ink);border:var(--bd);border-color:var(--paper);padding:10px 16px;font:800 .9rem var(--mono);text-transform:uppercase;transform:rotate(-1.5deg);margin:6px 0 16px}
+.note{font-size:.8rem;opacity:.7;max-width:760px}.fbot{margin-top:34px;padding-top:18px;border-top:2px dashed #f3efe455;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:600 .75rem var(--mono);opacity:.8}
+.backtop{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border:var(--bd);background:var(--y);font-weight:900;font-size:1.2rem;box-shadow:3px 3px 0 var(--ink);display:none;z-index:15}.backtop.show{display:block}
+.js .rv{opacity:0;transform:translateY(26px);transition:.6s}.js .rv.in{opacity:1;transform:none}
 /* Game */
-.game-overlay{position:fixed;inset:0;background:#07111ee8;backdrop-filter:blur(10px);z-index:50;display:none;overflow:auto;padding:24px}.game-overlay.show{display:grid;place-items:center}.game{width:min(100%,1000px);background:#0c1b34;color:#f6f8ff;border:1px solid #315276;border-radius:25px;overflow:hidden;box-shadow:0 30px 100px #0008}.game-top{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:18px 24px;border-bottom:1px solid #ffffff18}.game-logo{font-weight:900;letter-spacing:.02em}.game-logo span{color:#c5ef5d}.close-game{border:1px solid #ffffff33;background:#ffffff10;color:#fff;border-radius:50%;width:38px;height:38px;font-size:1.2rem}.game-layout{display:grid;grid-template-columns:1fr 260px;min-height:500px}.game-main{padding:30px;display:flex;flex-direction:column;justify-content:center}.game-meta{display:flex;justify-content:space-between;gap:10px;color:#9eb3d3;font-size:.85rem;margin-bottom:18px}.prize-now{color:#d4f76c;font-weight:900}.question-box{border:1px solid #3c5c85;background:linear-gradient(135deg,#17345c,#102545);border-radius:17px;padding:25px;text-align:center;font-size:1.2rem;font-weight:800;min-height:112px;display:grid;place-items:center;margin-bottom:20px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer{background:#132a4b;border:1px solid #47648a;color:#fff;border-radius:13px;padding:15px;text-align:left;min-height:60px;transition:.15s}.answer b{color:#d5f46c;margin-right:8px}.answer:hover:not(:disabled){background:#21466e;border-color:#8ba9d0}.answer.correct{background:#126b50;border-color:#64e5a4}.answer.wrong{background:#8c2e3a;border-color:#ff8d9a}.answer:disabled{cursor:default}.game-feedback{min-height:30px;margin:14px 0 0;font-weight:750}.game-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.game-actions button{border:0;border-radius:999px;padding:12px 18px;font-weight:850}.next-btn{background:#d5f46c;color:#10203a}.restart-btn{background:#ffffff18;color:#fff;border:1px solid #ffffff35!important}.ladder{background:#08162b;padding:22px 18px;border-left:1px solid #ffffff18;display:flex;flex-direction:column-reverse;justify-content:center;gap:5px}.ladder-row{display:flex;justify-content:space-between;gap:10px;padding:6px 10px;border-radius:7px;color:#8fa5c4;font-size:.78rem}.ladder-row:nth-child(5n){color:#d6e5f7;font-weight:850;margin-bottom:4px}.ladder-row.active{background:#d4f76c;color:#10203a;font-weight:950}.ladder-row.safe{color:#d5f46c}.game-start{text-align:center;max-width:650px;margin:auto}.game-start .trophy{font-size:3.8rem}.game-start h2{font-size:2.4rem;letter-spacing:-.05em;margin:8px}.game-start p{color:#afc0d8}.game-start .btn{margin-top:16px}.lifelines{display:flex;gap:8px;margin:0 0 18px}.lifeline{background:#ffffff12;border:1px solid #ffffff2e;color:#eaf1ff;padding:8px 12px;border-radius:999px;font-size:.8rem;font-weight:800}.lifeline:disabled{opacity:.35;cursor:not-allowed}
-@media(max-width:850px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:white;padding:20px 25px;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:16px}.navlinks.open{display:flex}.menu-toggle{display:block}.navcta{display:none}.hero-grid,.calculator{grid-template-columns:1fr}.hero-grid{padding:60px 0}.hero-card{max-width:520px;transform:none}.grid3{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.quiz-banner{grid-template-columns:1fr;padding:30px}.quiz-banner .btn{justify-self:start}.game-layout{grid-template-columns:1fr}.ladder{display:none}.game-main{padding:20px}.game-overlay{padding:10px}.question-box{padding:18px;font-size:1.05rem}}
-@media(max-width:560px){.wrap{width:min(100% - 28px,1160px)}.topbar .wrap{font-size:.75rem}.topbar .wrap span:last-child{display:none}.nav{height:66px}.navlinks{top:66px}.hero h1{font-size:2.8rem}.hero-grid{gap:35px}.section{padding:60px 0}.grid3{grid-template-columns:1fr}.calc-panel,.result-panel{padding:22px}.result-stats{grid-template-columns:1fr 1fr}.footer-top{flex-direction:column}.answers{grid-template-columns:1fr}.game-top{padding:14px 17px}.game-main{padding:17px}.question-box{min-height:90px}.game-start h2{font-size:1.9rem}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+.game-overlay{position:fixed;inset:0;background:#111e;z-index:50;display:none;overflow:auto;padding:22px}.game-overlay.show{display:grid;place-items:center}
+.game{width:min(100%,1000px);background:var(--paper);border:var(--bd);box-shadow:10px 10px 0 var(--y)}
+.game-top{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--y);border-bottom:var(--bd)}.game-logo{font-family:var(--hf);text-transform:uppercase}.game-logo span{background:var(--ink);color:var(--y);padding:0 6px}
+.close-game{border:var(--bd);background:#fff;width:38px;height:38px;font-size:1.2rem;font-weight:900}
+.game-layout{display:grid;grid-template-columns:1fr 250px;min-height:500px}.game-main{padding:28px;display:flex;flex-direction:column;justify-content:center}
+.game-meta{display:flex;justify-content:space-between;font:700 .8rem var(--mono);margin-bottom:14px}.prize-now{background:var(--ink);color:var(--y);padding:2px 8px}
+.question-box{border:var(--bd);background:#fff;padding:22px;text-align:center;font-size:1.2rem;font-weight:800;min-height:106px;display:grid;place-items:center;margin-bottom:18px;box-shadow:4px 4px 0 var(--ink)}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer{background:#fff;border:var(--bd);padding:14px;text-align:left;min-height:60px;font-weight:600;transition:.12s}.answer b{font-family:var(--mono);color:var(--r);margin-right:6px}
+.answer:hover:not(:disabled){background:var(--y);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}.answer.correct{background:#3ddc97}.answer.wrong{background:var(--r)}.answer:disabled{cursor:default}
+.game-feedback{min-height:30px;margin:14px 0 0;font-weight:700}.game-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.game-actions button{border:var(--bd);padding:11px 18px;font:800 .85rem var(--mono);text-transform:uppercase}.next-btn{background:var(--y)}
+.ladder{background:var(--ink);padding:18px 14px;display:flex;flex-direction:column-reverse;justify-content:center;gap:4px;border-left:var(--bd)}
+.ladder-row{display:flex;justify-content:space-between;padding:5px 9px;color:#f3efe499;font:600 .76rem var(--mono)}.ladder-row.safe{color:var(--y);font-weight:800}.ladder-row.active{background:var(--y);color:var(--ink);font-weight:800}
+.game-start{text-align:center;max-width:620px;margin:auto}.trophy{font-size:3.6rem}.game-start h2{font-size:2.3rem;margin:10px 0}.game-start .btn{margin:14px 4px 0}.game .pill{display:inline-block;background:var(--ink);color:var(--y);font:700 .72rem var(--mono);padding:4px 9px}
+.game .result-number{font-family:var(--hf);font-size:3rem;color:var(--r);-webkit-text-stroke:2px var(--ink);margin:10px 0}
+.lifelines{display:flex;gap:8px;margin:0 0 16px}.lifeline{background:#fff;border:var(--bd);padding:7px 12px;font:800 .78rem var(--mono)}.lifeline:disabled{opacity:.35;cursor:not-allowed}
+@media(max-width:900px){.hero-grid,.calc,.ft-top{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}.res{position:static}.quiz{grid-template-columns:1fr;padding:28px}.game-layout{grid-template-columns:1fr}.ladder{display:none}.radar-wrap{max-width:340px}
+.menu-toggle{display:block}.navlinks{display:none;position:absolute;top:64px;left:0;right:0;background:var(--paper);border-bottom:var(--bd);flex-direction:column;padding:12px 18px}.navlinks.open{display:flex}}
+@media(max-width:600px){.grid3,.fg,.answers{grid-template-columns:1fr}.section{padding:60px 0}.panel{padding:20px}.game-main{padding:18px}.chip{font-size:.7rem}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <header><div class="wrap nav">
-<a class="brand" href="#start" aria-label="RentenRadar Startseite"><span class="brandmark">↗</span><span>RentenRadar<small>Rente? Betrifft auch dich!</small></span></a>
-<nav class="navlinks" id="navlinks" aria-label="Hauptnavigation"><a href="#wissen">Rentenwissen</a><a href="#rechner">Mini-Rechner</a><a href="#startklar">So geht’s</a><a href="#faq">FAQ</a></nav>
-<a class="navcta" href="#rechner">Jetzt Überblick holen <span>↗</span></a><button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+<a class="brand" href="#start"><span class="dot"></span>RentenRadar</a>
+<nav class="navlinks" id="navlinks"><a href="#wissen">Wissen</a><a href="#rechner">Rechner</a><a href="#quiz">Quiz</a><a href="#faq">FAQ</a><a href="#quellen">Quellen</a></nav>
+<button class="menu-toggle" id="menuToggle" aria-label="Menü" aria-expanded="false">☰</button>
 </div></header>
 <main>
 <section class="hero" id="start"><div class="wrap hero-grid">
-<div><span class="eyebrow">✦ Das Rentensystem verstehen</span><h1>Rente?<br><em>Betrifft auch dich!</em></h1><p>Was passiert mit dem Geld, das wir später verdienen? Entdecke, wie die gesetzliche Rente funktioniert, was der demografische Wandel bedeutet und welche Entscheidungen die Zukunft der Rente prägen.</p><div class="hero-actions"><a class="btn primary" href="#wissen">So funktioniert die Rente <span>↓</span></a><button class="btn ghost" data-open-game>🎮 Wer wird Renten-Millionär?</button></div><div class="trust"><span>✓ Verständlich erklärt</span><span>✓ Interaktive Tools</span><span>✓ Ohne KI, direkt im Browser</span></div></div>
-<div class="hero-card"><div class="hero-card-head"><strong>Rente in Zahlen</strong><span class="live">● INTERAKTIV</span></div><h3>Die gesetzliche Rente</h3><div class="big-number">18,6 % <small>Beitragssatz*</small></div><div class="chart" aria-label="Symbolgrafik zu den drei Säulen"><div class="bar" style="height:48%"></div><div class="bar" style="height:68%"></div><div class="bar" style="height:58%"></div><div class="bar" style="height:85%"></div><div class="bar" style="height:72%"></div><div class="bar" style="height:96%"></div><div class="bar" style="height:82%"></div><div class="bar" style="height:100%"></div></div><div class="chart-labels"><span>Heute</span><span>Planen</span><span>Zukunft</span></div><div class="card-note">💡 <strong>Gut zu wissen:</strong> Die gesetzliche Rente funktioniert im Umlageverfahren: Die Beiträge von heute finanzieren zum großen Teil die Renten von heute. *Wert bitte anhand aktueller offizieller Angaben prüfen.</div></div>
+<div><span class="tag">Econo-me · Thema Rente</span>
+<h1>Rente?<br><span>Betrifft auch dich!</span></h1>
+<p>Was passiert mit dem Geld, das wir später verdienen? Finde heraus, wie die gesetzliche Rente funktioniert, was der demografische Wandel bedeutet und was am Ende für dich übrig bleibt.</p>
+<div class="hero-actions"><a class="btn primary" href="#rechner">Eigene Rente checken ↓</a><button class="btn ghost" data-open-game>🎮 Renten-Millionär</button></div></div>
+<div class="radar-wrap"><div class="radar"></div>
+<div class="chip c1"><b>18,6 %</b>Beitragssatz</div><div class="chip c2"><b>21 Mio.+</b>Rentner</div><div class="chip c3"><b>48 %</b>Niveau bis 2031</div><div class="chip c4"><b>120 Mrd. €+</b>Bundeszuschuss</div></div>
 </div></section>
-<section class="section" id="wissen"><div class="wrap"><div class="section-head"><span class="eyebrow">Rentenwissen</span><h2>So funktioniert die gesetzliche Rente.</h2><p>Entdecke die Themen der ursprünglichen RentenRadar-Seite: Generationenvertrag, Rentenbeiträge, demografischer Wandel, Rentenniveau und internationale Vergleiche.</p></div>
+<div class="ticker"><div><span>★ Generationenvertrag</span><span>★ Umlageverfahren</span><span>★ Drei Säulen</span><span>★ Demografischer Wandel</span><span>★ Rentenniveau</span><span>★ Regelaltersgrenze</span><span>★ Generationenvertrag</span><span>★ Umlageverfahren</span><span>★ Drei Säulen</span><span>★ Demografischer Wandel</span><span>★ Rentenniveau</span><span>★ Regelaltersgrenze</span></div></div>
+
+<section class="section" id="wissen"><div class="wrap">
+<div class="sh rv"><span class="tag">Rentenwissen</span><h2>Der Generationenvertrag in 3 Schritten</h2><p>Die gesetzliche Rente läuft überwiegend im Umlageverfahren: Beiträge von heute finanzieren die Renten von heute. Dazu kommen Bundesmittel.</p></div>
 <div class="grid3">
-<article class="feature"><div class="icon">🏛️</div><h3>Der Generationenvertrag</h3><p>Wer zahlt ein, wie werden laufende Renten finanziert und warum spricht man vom Umlageverfahren?</p><a class="text-link" href="#faq">Generationenvertrag entdecken →</a></article>
-<article class="feature"><div class="icon">🪙</div><h3>Die drei Säulen</h3><p>Gesetzliche Rente, betriebliche Altersversorgung und private Vorsorge im Überblick.</p><a class="text-link" href="#saeulen">Vorsorge-Säulen ansehen →</a></article>
-<article class="feature"><div class="icon">🗓️</div><h3>Demografischer Wandel</h3><p>Wie verändert sich das Verhältnis von Beitragszahlenden zu Rentnerinnen und Rentnern – und was bedeutet das?</p><a class="text-link" href="#faq">Demografie verstehen →</a></article>
-</div></div></section>
-<section class="section calculator-section" id="rechner"><div class="wrap"><div class="section-head"><span class="eyebrow">Mini-Rechner</span><h2>Rechne selbst: Dein Anteil am Rentenbeitrag.</h2><p>Gib einen monatlichen Bruttolohn ein und sieh, wie sich der Rentenversicherungsbeitrag rechnerisch auf Beschäftigte und Arbeitgeber verteilt.</p></div>
-<div class="calculator"><div class="calc-panel"><h3>Dein Bruttolohn</h3><p class="subtle">Ein vereinfachtes Beispiel für den Rentenversicherungsbeitrag.</p>
-<div class="field"><div class="field-top"><label for="income">Monatlicher Bruttolohn</label><output id="incomeOut" for="income">3.500 €</output></div><input id="income" type="range" min="500" max="12000" step="50" value="3500"><div class="range-ends"><span>500 €</span><span>12.000 €</span></div></div>
-<div class="field"><div class="field-top"><label for="rate">Beitragssatz (Beispiel)</label><output id="rateOut" for="rate">18,6 %</output></div><input id="rate" type="range" min="10" max="25" step="0.1" value="18.6"><div class="range-ends"><span>10 %</span><span>25 %</span></div></div>
-<div class="field"><div class="field-top"><label for="cap">Monatliche Beitragsbemessungsgrenze</label></div><select id="cap"><option value="8450">8.450 € (Beispielwert für 2026 – bitte aktuell prüfen)</option><option value="999999">Keine Begrenzung im Modell</option></select></div>
-<p class="subtle">Der Regler und die Grenze dienen der Veranschaulichung. Für aktuelle verbindliche Werte bitte offizielle Quellen prüfen.</p></div>
-<div class="result-panel"><span class="pill">DEIN BEITRAGS-CHECK</span><h3 style="margin-top:20px">So verteilt sich der Beitrag</h3><div class="result-number" id="estimate">651 € <small>/ Monat gesamt</small></div><p class="result-caption">Modellwert aus deinem Brutto und dem gewählten Beitragssatz.</p><div class="meter"><div class="meter-fill" id="meterFill"></div></div><div class="result-caption" id="meterCaption">Der Beitrag wird im Regelfall zwischen Arbeitnehmer und Arbeitgeber geteilt.</div><div class="result-stats"><div class="stat"><small>Dein Anteil (50 %)</small><strong id="statIncome">325,50 € / Mo.</strong></div><div class="stat"><small>Arbeitgeberanteil (50 %)</small><strong id="statExtra">325,50 € / Mo.</strong></div></div><p class="disclaimer">Vereinfachte Darstellung: Tatsächliche Regeln und Beitragsbemessungsgrenzen können sich ändern. Das ist keine individuelle Lohnabrechnung und keine Rentenprognose.</p></div></div></div></section>
-<section class="section" id="saeulen"><div class="wrap"><div class="section-head"><span class="eyebrow">Das Rentensystem</span><h2>Der Generationenvertrag – einfach erklärt.</h2><p>Die gesetzliche Rente funktioniert überwiegend im Umlageverfahren: Beiträge von Beschäftigten und Arbeitgebern finanzieren laufende Rentenzahlungen. Dazu kommen Bundesmittel.</p></div><div class="grid3">
-<article class="feature"><div class="icon">🧑‍💼</div><span class="pill">1 · EINZAHLEN</span><h3>Beschäftigte und Arbeitgeber</h3><p>Bei versicherungspflichtiger Beschäftigung werden Beiträge zur Rentenversicherung abgeführt. In der Regel tragen Beschäftigte und Arbeitgeber jeweils einen Anteil.</p></article>
-<article class="feature"><div class="icon">🏦</div><span class="pill">2 · VERTEILEN</span><h3>Die Rentenversicherung</h3><p>Die eingehenden Beiträge werden größtenteils genutzt, um die laufenden Renten zu finanzieren. Das ist kein persönliches Sparkonto.</p></article>
-<article class="feature"><div class="icon">👵</div><span class="pill">3 · AUSZAHLEN</span><h3>Renten im Ruhestand</h3><p>Wer die Voraussetzungen erfüllt, erhält eine Rente. Die Höhe hängt unter anderem vom Versicherungsverlauf und den geltenden Berechnungswerten ab.</p></article>
-</div><div class="section-head" style="margin-top:60px"><span class="eyebrow">Demografischer Wandel</span><h2>Wie viele zahlen für wie viele?</h2><p>Wenn sich das Verhältnis zwischen Beitragszahlenden und Rentenbeziehenden verändert, beeinflusst das die Finanzierung. Das folgende Modell zeigt den Zusammenhang stark vereinfacht.</p></div>
-<div class="calculator"><div class="calc-panel"><h3>Spiel mit dem Regler</h3><p class="subtle">Modellannahme: Wie viele Beitragszahlende kommen auf eine rentenbeziehende Person?</p><div class="field"><div class="field-top"><label for="ratio">Beitragszahlende pro Rentner</label><output id="ratioOut" for="ratio">2,0 Personen</output></div><input id="ratio" type="range" min="1" max="5" step="0.1" value="2"><div class="range-ends"><span>1 Person</span><span>5 Personen</span></div></div><p class="subtle">Das ist kein offizielles Prognosemodell. Löhne, Steuern, Beschäftigung, Produktivität und gesetzliche Entscheidungen spielen in Wirklichkeit ebenfalls eine Rolle.</p></div>
-<div class="result-panel"><span class="pill">VEREINFACHTES MODELL</span><h3 style="margin-top:20px">Illustrativer Beitragsbedarf</h3><div class="result-number" id="demoRate">20,0 % <small>Modellwert</small></div><p class="result-caption" id="demoCaption">Je weniger Beitragszahlende pro Rentner, desto höher wäre bei gleichen Modellannahmen der rechnerische Bedarf.</p><div class="meter"><div class="meter-fill" id="demoMeter"></div></div><p class="disclaimer">Nur zur Erklärung des Zusammenhangs gedacht. Keine Vorhersage des künftigen Beitragssatzes und keine Wiedergabe offizieller Projektionen.</p></div></div>
-<div class="section-head" style="margin-top:60px"><span class="eyebrow">Fakten zum Entdecken</span><h2>Kurz tippen, mehr verstehen.</h2><p>Klicke die Karten an, um die Begriffe und Zusammenhänge aufzudecken.</p></div><div class="grid3">
-<button class="feature fact-card" type="button" aria-expanded="false"><div class="icon">📊</div><h3>Was ist das Rentenniveau?</h3><p class="fact-answer" hidden>Es vergleicht eine standardisierte Rente nach 45 Jahren mit Durchschnittsverdienst mit dem durchschnittlichen Arbeitsentgelt. Es bedeutet nicht, dass jede Person einen festen Prozentsatz ihres letzten Gehalts bekommt.</p><span class="text-link">Zum Umdrehen ↻</span></button>
-<button class="feature fact-card" type="button" aria-expanded="false"><div class="icon">🗓️</div><h3>Was ist die Regelaltersgrenze?</h3><p class="fact-answer" hidden>Das ist das gesetzlich festgelegte Alter für den regulären Beginn einer Altersrente. Es hängt unter anderem vom Geburtsjahr ab; individuelle Voraussetzungen sind zu beachten.</p><span class="text-link">Zum Umdrehen ↻</span></button>
-<button class="feature fact-card" type="button" aria-expanded="false"><div class="icon">🌍</div><h3>Wie machen es andere Länder?</h3><p class="fact-answer" hidden>Rentensysteme unterscheiden sich: Manche kombinieren umlagefinanzierte Renten mit verpflichtenden oder freiwilligen kapitalgedeckten Elementen. Ein fairer Vergleich muss auch Steuern, Leistungen und Lebenshaltungskosten berücksichtigen.</p><span class="text-link">Zum Umdrehen ↻</span></button>
-</div></div></section>
-<section class="section" id="startklar"><div class="wrap"><div class="section-head"><span class="eyebrow">Dein Fahrplan</span><h2>Die Rentenfrage geht uns alle an.</h2></div><div class="steps"><div class="step"><h3>Basics checken</h3><p>Lerne Umlageverfahren, Rentenbeitrag, Rentenniveau und demografischen Wandel kennen.</p></div><div class="step"><h3>Eigene Lage prüfen</h3><p>Vergleiche verschiedene Sichtweisen und denke darüber nach, wie sich die Finanzierung der Rente verändern könnte.</p></div><div class="step"><h3>Wissen testen</h3><p>Teste dein Wissen zu Rentensystem, Generationenvertrag, Altersvorsorge und Demografie im Renten-Quiz.</p></div></div>
-<div class="quiz-banner" style="margin-top:45px"><div><span class="eyebrow">🎮 Quiz-Modus</span><h2>Bereit für die Renten-Challenge?</h2><p>15 Fragen, vier Antwortmöglichkeiten und eine virtuelle Million. Schaffst du es bis ganz nach oben? Kein Echtgeld, nur Wissen und Spaß.</p></div><button class="btn primary" data-open-game>Spiel starten <span>→</span></button></div></div></section>
-<section class="section" id="faq"><div class="wrap"><div class="section-head"><span class="eyebrow">FAQ</span><h2>Die wichtigsten Fragen zur Rente.</h2><p>Ein kurzer Einstieg in die wichtigsten Begriffe. Für verbindliche Auskünfte sind offizielle Stellen die beste Adresse.</p></div><div class="faq">
-<div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Wie funktioniert das Umlageverfahren?</span><span>＋</span></button><div class="faq-a">Bei vielen Beschäftigten zahlen Arbeitnehmer und Arbeitgeber Beiträge. Diese Einnahmen finanzieren zum großen Teil die laufenden Renten. Zusätzlich beteiligt sich der Bund mit Steuermitteln.</div></div>
-<div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Was bedeutet Rentenniveau?</span><span>＋</span></button><div class="faq-a">Das Rentenniveau vergleicht eine standardisierte Rente nach 45 Jahren mit Durchschnittsverdienst mit dem durchschnittlichen Arbeitsentgelt. Es bedeutet nicht, dass jede Person diesen Prozentsatz ihres letzten Gehalts bekommt.</div></div>
-<div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Warum ist der demografische Wandel wichtig?</span><span>＋</span></button><div class="faq-a">Wenn sich das Verhältnis zwischen Beitragszahlenden und Rentenbeziehenden verändert, beeinflusst das die Finanzierung. Auch Löhne, Beschäftigung, Produktivität, Steuern und politische Entscheidungen spielen eine Rolle.</div></div>
-<div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Ist der Rechner eine echte Prognose?</span><span>＋</span></button><div class="faq-a">Nein. Er zeigt nur vereinfacht, wie Beiträge und demografische Annahmen zusammenhängen. Er ist keine individuelle Rentenberechnung und keine Prognose.</div></div>
-<div class="faq-item"><button class="faq-q" aria-expanded="false"><span>Wo bekomme ich verlässliche Informationen?</span><span>＋</span></button><div class="faq-a">Bei der Deutschen Rentenversicherung findest du offizielle Informationen zum Rentensystem, zu Versicherungszeiten und zu persönlichen Ansprüchen.</div></div>
-</div><div style="margin-top:26px"><a class="btn" href="https://www.deutsche-rentenversicherung.de/" target="_blank" rel="noopener noreferrer">Zur Deutschen Rentenversicherung ↗</a></div></div></section>
-</main>
-<footer><div class="wrap"><div class="footer-top"><div class="footer-brand"><a class="brand" href="#start"><span class="brandmark">↗</span><span>RentenRadar<small style="color:#a5b6c8">Rente? Betrifft auch dich!</small></span></a><p>RentenRadar erklärt das deutsche Rentensystem, den Generationenvertrag und den demografischen Wandel. Informieren, ausprobieren und Wissen testen – ganz ohne KI und ohne Anmeldung.</p></div><div class="footer-links"><a href="#wissen">Rentenwissen</a><a href="#rechner">Mini-Rechner</a><a href="#faq">FAQ</a></div></div>
-<div class="sources" aria-labelledby="sources-title">
-  <h3 id="sources-title">Quellen &amp; Hinweise</h3>
-  <p>Zum Nachlesen und Prüfen der Angaben:</p>
-  <ul>
-    <li><a href="https://www.deutsche-rentenversicherung.de/" target="_blank" rel="noopener noreferrer">Deutsche Rentenversicherung – Informationen zur gesetzlichen Rente ↗</a></li>
-    <li><a href="https://www.bmas.de/" target="_blank" rel="noopener noreferrer">Bundesministerium für Arbeit und Soziales – Rente und Alterssicherung ↗</a></li>
-    <li><a href="https://www.destatis.de/" target="_blank" rel="noopener noreferrer">Statistisches Bundesamt – Bevölkerung und demografischer Wandel ↗</a></li>
-    <li><a href="https://rentenradar.netlify.app/" target="_blank" rel="noopener noreferrer">Vorherige RentenRadar-Seite – thematische Grundlage ↗</a></li>
-  </ul>
-  <p class="ai-note">Hinweis zur Erstellung: Diese Website wurde als Lernprojekt mit Unterstützung eines KI-Tools entwickelt. Inhalte, Berechnungen und aktuelle Werte sollten anhand der verlinkten Originalquellen überprüft werden. Der Rechner ist vereinfacht und ersetzt keine individuelle Beratung.</p>
+<article class="card rv"><div class="num">01</div><h3>Einzahlen</h3><p>Beschäftigte und Arbeitgeber zahlen bei versicherungspflichtiger Arbeit Beiträge in die Rentenversicherung – in der Regel je zur Hälfte.</p></article>
+<article class="card rv"><div class="num">02</div><h3>Verteilen</h3><p>Die Beiträge fließen größtenteils direkt in die laufenden Renten. Es ist kein persönliches Sparkonto.</p></article>
+<article class="card rv"><div class="num">03</div><h3>Auszahlen</h3><p>Wer die Voraussetzungen erfüllt, bekommt Rente. Die Höhe hängt vom Versicherungsverlauf und den geltenden Rechengrößen ab.</p></article>
 </div>
-<div class="footer-bottom"><span>© <span id="year"></span> RentenRadar · Lernprojekt</span><span>Keine individuelle Finanz- oder Rechtsberatung.</span></div></div></footer>
+<div class="sh rv" style="margin-top:70px"><span class="tag">Fakten</span><h2>Antippen & verstehen</h2></div>
+<div class="grid3">
+<button class="card fact-card rv" type="button" aria-expanded="false"><div class="ico">📊</div><h3>Was ist das Rentenniveau?</h3><p class="fact-answer" hidden>Es vergleicht eine Standardrente nach 45 Jahren mit Durchschnittsverdienst mit dem durchschnittlichen Arbeitsentgelt. Es heißt nicht, dass jeder einen festen Prozentsatz des letzten Gehalts bekommt.</p><span class="text-link">Aufdecken ↻</span></button>
+<button class="card fact-card rv" type="button" aria-expanded="false"><div class="ico">🗓️</div><h3>Was ist die Regelaltersgrenze?</h3><p class="fact-answer" hidden>Das gesetzliche Alter für den regulären Rentenbeginn. Es hängt vom Geburtsjahr ab und steigt schrittweise auf 67 Jahre.</p><span class="text-link">Aufdecken ↻</span></button>
+<button class="card fact-card rv" type="button" aria-expanded="false"><div class="ico">🌍</div><h3>Wie machen es andere Länder?</h3><p class="fact-answer" hidden>Rentensysteme unterscheiden sich: Manche kombinieren Umlage mit verpflichtender oder freiwilliger Kapitaldeckung. Ein fairer Vergleich braucht auch Steuern, Leistungen und Lebenshaltungskosten.</p><span class="text-link">Aufdecken ↻</span></button>
+</div></div></section>
+
+<section class="section alt" id="rechner"><div class="wrap">
+<div class="sh rv"><span class="tag">Rentenrechner</span><h2>Stell dein Leben ein. Sieh deine Rente.</h2><p>Alter, Gehalt, Arbeitszeit, Gehaltsentwicklung, Rentenbeginn – alles lässt sich einstellen. Das Ergebnis ist eine grobe Modellrechnung in heutigem Geldwert, keine offizielle Auskunft.</p></div>
+<div class="calc">
+<div class="panel rv"><h3>Deine Daten</h3><p class="sub">Regler bewegen, Ergebnis rechts aktualisiert sich live.</p>
+<div class="fg">
+<div class="f"><div class="ft"><label for="age">Dein Alter</label></div><input id="age" type="number" min="16" max="66" value="30"></div>
+<div class="f"><div class="ft"><label for="start">Berufseinstieg</label><output id="o_start"></output></div><input id="start" type="range" min="16" max="35" step="1" value="22"></div>
+<div class="f full"><div class="ft"><label for="sal">Bruttogehalt pro Monat (Vollzeit)</label><output id="o_sal"></output></div><input id="sal" type="range" min="500" max="12000" step="50" value="3500"></div>
+<div class="f"><div class="ft"><label for="pt">Arbeitszeit</label><output id="o_pt"></output></div><input id="pt" type="range" min="10" max="100" step="5" value="100"></div>
+<div class="f"><div class="ft"><label for="g">Dein Gehaltsplus pro Jahr</label><output id="o_g"></output></div><input id="g" type="range" min="0" max="6" step="0.1" value="2.5"></div>
+<div class="f full"><div class="ft"><label for="rb">Rentenbeginn (Alter)</label><output id="o_rb"></output></div><input id="rb" type="range" min="756" max="840" step="1" value="804"></div>
+</div>
+<details><summary>⚙ Feineinstellungen</summary>
+<div class="fg">
+<div class="f"><div class="ft"><label for="rw">Rentenwert (€ je Punkt)</label></div><input id="rw" type="number" step="0.01" value="42.52"></div>
+<div class="f"><div class="ft"><label for="avg">Durchschnittsentgelt (€/Jahr)</label></div><input id="avg" type="number" step="100" value="51000"></div>
+<div class="f"><div class="ft"><label for="a">Lohnplus Durchschnitt (%/Jahr)</label><output id="o_a"></output></div><input id="a" type="range" min="0" max="6" step="0.1" value="2.5"></div>
+<div class="f"><div class="ft"><label for="rate">Beitragssatz (%)</label></div><input id="rate" type="number" step="0.1" value="18.6"></div>
+<div class="f"><div class="ft"><label for="bbg">Beitragsbemessungsgrenze (€/Monat)</label></div><input id="bbg" type="number" step="50" value="8450"></div>
+<div class="f"><div class="ft"><label for="extra">Zusätzliche Entgeltpunkte</label></div><input id="extra" type="number" step="0.1" min="0" value="0"></div>
+</div><p class="sub" style="margin-bottom:14px">Beispielwerte, ändern sich jährlich – bitte bei der Deutschen Rentenversicherung prüfen. Zusätzliche Punkte z. B. für Kindererziehung.</p></details>
+</div>
+<div class="panel res rv"><span class="tag">Dein Ergebnis</span><h3>Geschätzte Monatsrente</h3>
+<div class="big" id="rente">–</div><p class="cap" id="rcap"></p>
+<div class="meter"><i id="meter"></i></div><p class="cap" id="mcap"></p>
+<div class="stats">
+<div class="stat"><small>Regelaltersgrenze</small><strong id="s_reg">–</strong></div>
+<div class="stat"><small>Zu-/Abschlag</small><strong id="s_zf">–</strong></div>
+<div class="stat"><small>Beitragsjahre</small><strong id="s_yrs">–</strong></div>
+<div class="stat"><small>Entgeltpunkte</small><strong id="s_ep">–</strong></div>
+<div class="stat"><small>Dein Beitrag heute</small><strong id="s_an">–</strong></div>
+<div class="stat"><small>Arbeitgeber heute</small><strong id="s_ag">–</strong></div>
+</div>
+<div class="warn" id="warn"></div>
+<p class="disc">Vereinfachtes Modell: Rentenwert und Löhne wachsen gleich, daher Angaben in heutigem Geldwert. Keine Rentenauskunft, keine Beratung. Abschlag 0,3 % pro Monat (max. 14,4 %), Zuschlag 0,5 % pro Monat.</p></div>
+</div>
+
+<div class="sh rv" style="margin-top:80px"><span class="tag">Demografie</span><h2>Wie viele zahlen für wie viele?</h2></div>
+<div class="calc">
+<div class="panel rv"><h3>Spiel mit dem Regler</h3><p class="sub">Wie viele Beitragszahler kommen auf einen Rentner?</p><div class="f"><div class="ft"><label for="ratio">Beitragszahler pro Rentner</label><output id="ratioOut"></output></div><input id="ratio" type="range" min="1" max="5" step="0.1" value="2"></div><p class="sub" style="margin-top:14px">Kein Prognosemodell: Löhne, Steuern, Beschäftigung und Gesetze spielen in Wirklichkeit auch mit.</p></div>
+<div class="panel res rv"><span class="tag">Vereinfachtes Modell</span><h3>Rechnerischer Beitragsbedarf</h3><div class="big" id="demoRate"></div><p class="cap" id="demoCaption"></p><div class="meter"><i id="demoMeter"></i></div></div>
+</div></div></section>
+
+<section class="section" id="quiz"><div class="wrap">
+<div class="sh rv"><span class="tag">Dein Fahrplan</span><h2>Wissen testen</h2><p>Basics checken, eigene Lage prüfen, dann ab ins Quiz.</p></div>
+<div class="quiz rv"><div><span class="tag">🎮 Quiz-Modus</span><h2>Wer wird Renten-Millionär?</h2><p>15 Fragen, vier Antworten, eine virtuelle Million. Kein Echtgeld – nur Wissen und Spaß.</p></div><button class="btn primary" data-open-game>Spiel starten →</button></div>
+</div></section>
+
+<section class="section alt" id="faq"><div class="wrap">
+<div class="sh rv"><span class="tag">FAQ</span><h2>Häufige Fragen</h2></div>
+<div class="faq">
+<div class="fi rv"><button class="fq" aria-expanded="false"><span>Wie funktioniert das Umlageverfahren?</span><span>+</span></button><div class="fa">Arbeitnehmer und Arbeitgeber zahlen Beiträge. Diese finanzieren zum großen Teil die laufenden Renten. Zusätzlich beteiligt sich der Bund mit Steuermitteln.</div></div>
+<div class="fi rv"><button class="fq" aria-expanded="false"><span>Was bedeutet Rentenniveau?</span><span>+</span></button><div class="fa">Es vergleicht eine Standardrente nach 45 Jahren Durchschnittsverdienst mit dem Durchschnittsentgelt. Es ist keine individuelle Zusage.</div></div>
+<div class="fi rv"><button class="fq" aria-expanded="false"><span>Warum ist der demografische Wandel wichtig?</span><span>+</span></button><div class="fa">Verändert sich das Verhältnis von Beitragszahlenden zu Rentenbeziehenden, beeinflusst das die Finanzierung. Auch Löhne, Beschäftigung und Politik spielen eine Rolle.</div></div>
+<div class="fi rv"><button class="fq" aria-expanded="false"><span>Ist der Rechner eine echte Prognose?</span><span>+</span></button><div class="fa">Nein. Er zeigt vereinfacht, wie Gehalt, Versicherungsjahre und Rentenbeginn zusammenwirken. Eine verbindliche Auskunft gibt nur die Deutsche Rentenversicherung.</div></div>
+<div class="fi rv"><button class="fq" aria-expanded="false"><span>Wo bekomme ich verlässliche Infos?</span><span>+</span></button><div class="fa">Bei der Deutschen Rentenversicherung: Informationen zum Rentensystem, zu Versicherungszeiten und zu persönlichen Ansprüchen.</div></div>
+</div></div></section>
+</main>
+
+<footer id="quellen"><div class="wrap">
+<div class="ft-top"><div><h3>RentenRadar</h3><p style="margin:0;max-width:380px">Rente erklärt – zum Informieren, Ausprobieren und Wissen testen. Ohne Anmeldung, direkt im Browser.</p></div>
+<div class="src"><h3>Quellen & Hinweise</h3><div class="badge">🏆 Ein Beitrag zum Wettbewerb econo-me · Thema Rente</div>
+<ul>
+<li><a href="https://www.deutsche-rentenversicherung.de/" target="_blank" rel="noopener noreferrer">Deutsche Rentenversicherung ↗</a></li>
+<li><a href="https://www.bmas.de/" target="_blank" rel="noopener noreferrer">Bundesministerium für Arbeit und Soziales ↗</a></li>
+<li><a href="https://www.destatis.de/" target="_blank" rel="noopener noreferrer">Statistisches Bundesamt ↗</a></li>
+<li><a href="https://rentenradar.netlify.app/" target="_blank" rel="noopener noreferrer">RentenRadar (frühere Version) ↗</a></li>
+</ul>
+<p class="note">Die Seite wurde mit Unterstützung von KI-Tools entwickelt. Zahlen und Rechenwerte bitte mit den Originalquellen prüfen; der Rechner ersetzt keine Beratung.</p></div></div>
+<div class="fbot"><span>© <span id="year"></span> RentenRadar · Lernprojekt</span><span>Keine individuelle Finanz- oder Rechtsberatung.</span></div>
+</div></footer>
 <button class="backtop" id="backtop" aria-label="Nach oben">↑</button>
 <div class="game-overlay" id="gameOverlay" role="dialog" aria-modal="true" aria-label="Wer wird Renten-Millionär?"><div class="game"><div class="game-top"><div class="game-logo">WER WIRD <span>RENTEN-MILLIONÄR?</span></div><button class="close-game" id="closeGame" aria-label="Spiel schließen">×</button></div><div id="gameContent"></div></div></div>
 <script>
+document.documentElement.classList.add('js');
 const $=s=>document.querySelector(s);
-$('#year').textContent=new Date().getFullYear();
-const menuToggle=$('#menuToggle'),navlinks=$('#navlinks');
-menuToggle.addEventListener('click',()=>{const open=navlinks.classList.toggle('open');menuToggle.setAttribute('aria-expanded',open);menuToggle.textContent=open?'×':'☰'});
-navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navlinks.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='☰'}));
-document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.parentElement;const open=item.classList.toggle('open');btn.setAttribute('aria-expanded',open)}));
-const backtop=$('#backtop');window.addEventListener('scroll',()=>backtop.classList.toggle('show',window.scrollY>550));backtop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-const income=$('#income'),rate=$('#rate'),cap=$('#cap');
 const euro=n=>n.toLocaleString('de-DE',{style:'currency',currency:'EUR',maximumFractionDigits:2});
-function updateCalc(){const gross=+income.value,percent=+rate.value,base=Math.min(gross,+cap.value),total=base*percent/100,half=total/2;
-$('#incomeOut').textContent=euro(gross);$('#rateOut').textContent=percent.toLocaleString('de-DE',{maximumFractionDigits:1})+' %';
-$('#estimate').innerHTML=euro(total)+' <small>/ Monat gesamt</small>';
-$('#statIncome').textContent=euro(half)+' / Mo.';$('#statExtra').textContent=euro(half)+' / Mo.';
-const ratio=Math.min(100,total/Math.max(gross,1)*100);$('#meterFill').style.width=ratio+'%';
-$('#meterCaption').textContent='Berechnungsbasis: '+euro(base)+' pro Monat'+(gross>base?' (Beitragsbemessungsgrenze im Modell berücksichtigt).':'.')+' Der Beitrag wird hier hälftig aufgeteilt.'}
-[income,rate,cap].forEach(el=>el.addEventListener('input',updateCalc));updateCalc();
-const ratioSlider=$('#ratio');
-function updateDemo(){const people=+ratioSlider.value;const model=40/people;$('#ratioOut').textContent=people.toLocaleString('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1})+' Personen';$('#demoRate').innerHTML=model.toLocaleString('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1})+' % <small>Modellwert</small>';$('#demoMeter').style.width=Math.min(100,model/40*100)+'%';$('#demoCaption').textContent='Bei '+people.toLocaleString('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1})+' Beitragszahlenden pro Rentner ergibt sich in diesem rein illustrativen Modell ein Wert von '+model.toLocaleString('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1})+'. Das ist keine reale Beitragssatzprognose.'}
-ratioSlider.addEventListener('input',updateDemo);updateDemo();
-document.querySelectorAll('.fact-card').forEach(card=>card.addEventListener('click',()=>{const answer=card.querySelector('.fact-answer');const open=answer.hidden;answer.hidden=!open;card.setAttribute('aria-expanded',open);card.querySelector('.text-link').textContent=open?'Karte schließen ×':'Zum Umdrehen ↻'}));
+const fmt=(n,d=0)=>n.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d});
+const ym=m=>Math.floor(m/12)+' J. '+(m%12)+' M.';
+$('#year').textContent=new Date().getFullYear();
+const mt=$('#menuToggle'),nl=$('#navlinks');
+mt.addEventListener('click',()=>{const o=nl.classList.toggle('open');mt.setAttribute('aria-expanded',o);mt.textContent=o?'×':'☰'});
+nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nl.classList.remove('open');mt.textContent='☰'}));
+document.querySelectorAll('.fq').forEach(b=>b.addEventListener('click',()=>{const o=b.parentElement.classList.toggle('open');b.setAttribute('aria-expanded',o)}));
+document.querySelectorAll('.fact-card').forEach(c=>c.addEventListener('click',()=>{const a=c.querySelector('.fact-answer'),o=a.hidden;a.hidden=!o;c.setAttribute('aria-expanded',o);c.querySelector('.text-link').textContent=o?'Zuklappen ×':'Aufdecken ↻'}));
+const bt=$('#backtop');addEventListener('scroll',()=>bt.classList.toggle('show',scrollY>550));bt.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.rv').forEach(el=>io.observe(el))}else document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
+// Rentenrechner
+const ids=['age','start','sal','pt','g','a','rb','rw','avg','rate','bbg','extra'],v={};ids.forEach(i=>v[i]=$('#'+i));
+function calc(){
+const n=k=>+v[k].value||0;
+const age=n('age'),start=n('start'),S=n('sal'),pt=n('pt')/100,g=n('g')/100,a=n('a')/100,rbm=n('rb'),RW=n('rw'),A=Math.max(1,n('avg')),rate=n('rate'),bbg=n('bbg'),ex=n('extra');
+const by=new Date().getFullYear()-age;
+const rm=by<=1946?780:by<=1958?780+(by-1946):by<=1964?792+2*(by-1958):804;
+const diff=rbm-rm,zf=diff<0?1+Math.max(diff,-48)*.003:1+diff*.005;
+const retAge=rbm/12,fromAge=Math.max(age,start),future=Math.max(0,retAge-fromAge),past=Math.max(0,Math.min(age,retAge)-start);
+const cap=bbg*12/A,base=S*12*pt/A,r=(1+g)/(1+a);
+let ep=ex;
+for(let k=1;k<=past;k++)ep+=Math.min(base*Math.pow(r,-k),cap);
+for(let k=0;k<future;k++)ep+=Math.min(1,future-k)*Math.min(base*Math.pow(r,k),cap);
+const rente=ep*RW*zf,years=past+future,gross=S*pt,tot=Math.min(gross,bbg)*rate/100;
+$('#o_start').textContent=start+' J.';$('#o_sal').textContent=euro(S);$('#o_pt').textContent=Math.round(pt*100)+' %';
+$('#o_g').textContent=fmt(g*100,1)+' %';$('#o_a').textContent=fmt(a*100,1)+' %';$('#o_rb').textContent=ym(rbm);
+$('#rente').innerHTML=euro(rente)+' <small>/ Monat brutto</small>';
+$('#rcap').textContent='Ab '+ym(rbm)+' – in heutigem Geldwert, vor Kranken-/Pflegeversicherung und Steuern.';
+const q=gross>0?rente/gross*100:0;$('#meter').style.width=Math.min(100,q)+'%';
+$('#mcap').textContent='Das entspricht ca. '+fmt(q,0)+' % deines heutigen Bruttogehalts (nach Arbeitszeit).';
+$('#s_reg').textContent=ym(rm);
+$('#s_zf').textContent=(zf>=1?'+':'')+fmt((zf-1)*100,1)+' %';
+$('#s_yrs').textContent=fmt(years,1)+' J.';$('#s_ep').textContent=fmt(ep,1);
+$('#s_an').textContent=euro(tot/2);$('#s_ag').textContent=euro(tot/2);
+const w=$('#warn');let msg='';
+if(diff<0&&years<35)msg='Vorzeitige Rente gibt es in der Regel erst ab 35 Versicherungsjahren (hier: '+fmt(years,0)+').';
+else if(diff<-48)msg='Abschlag im Modell auf 14,4 % begrenzt.';
+else if(retAge<=age)msg='Der Rentenbeginn liegt vor deinem heutigen Alter – Ergebnis nur theoretisch.';
+w.textContent=msg;w.classList.toggle('on',!!msg)}
+ids.forEach(i=>v[i].addEventListener('input',calc));
+// Demografie
+const rs=$('#ratio');
+function demo(){const p=+rs.value,m=40/p;$('#ratioOut').textContent=fmt(p,1)+' Personen';$('#demoRate').innerHTML=fmt(m,1)+' % <small>Modellwert</small>';$('#demoMeter').style.width=Math.min(100,m/40*100)+'%';$('#demoCaption').textContent='Bei '+fmt(p,1)+' Beitragszahlern pro Rentner ergibt sich im Modell '+fmt(m,1)+'. Weniger Zahler heißt rechnerisch mehr Bedarf – keine reale Prognose.'}
+rs.addEventListener('input',demo);
 // Millionaire game: 15 questions, all questions are about the German pension system.
 const questions=[
 {q:'Wie funktioniert die gesetzliche Rente in Deutschland überwiegend?',a:['Im Umlageverfahren','Als persönliches Sparkonto','Nur durch Aktiengewinne','Ausschließlich durch Spenden'],c:0,e:'Die laufenden Beiträge finanzieren zum großen Teil die laufenden Renten.'},
@@ -134,6 +282,7 @@ function useFifty(){if(used5050||answered)return;used5050=true;$('#fifty').disab
 function skipQuestion(){if(usedSkip||answered)return;usedSkip=true;earned=qi>0?prizes[qi-1]:0;qi++;if(qi>=questions.length){renderWin()}else renderQuestion()}
 function renderWin(){gameContent.innerHTML=`<div class="game-main"><div class="game-start"><div class="trophy">🎉</div><span class="pill">CHALLENGE GESCHAFFT</span><h2>Du bist Renten-Millionär!</h2><div class="result-number">${euro(1000000)}</div><p>Virtuelle Million erreicht! Du hast alle Fragen richtig beantwortet. Starkes Rentenwissen.</p><button class="btn primary" id="playAgain">Nochmal spielen ↻</button></div></div>`;$('#playAgain').addEventListener('click',startGame)}
 function renderLose(){gameContent.innerHTML=`<div class="game-main"><div class="game-start"><div class="trophy">💡</div><span class="pill">RUNDE BEENDET</span><h2>Jede Runde macht schlauer.</h2><div class="result-number">${euro(earned)}</div><p>Dein virtueller Gewinn. Schau dir die Rentenwissen-Karten und FAQ an und versuch’s danach nochmal.</p><button class="btn primary" id="playAgain">Nochmal spielen ↻</button><button class="btn ghost" id="backContent" style="margin-left:8px">Zur Website</button></div></div>`;$('#playAgain').addEventListener('click',startGame);$('#backContent').addEventListener('click',closeGame)}
+calc();demo();
 </script>
 </body>
 </html>

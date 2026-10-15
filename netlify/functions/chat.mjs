@@ -29,23 +29,33 @@ export default async (req, context) => {
   if (!q) return json({ error: 'empty' }, 400);
   q = q.slice(0, 500).replace(/[<>]/g, '');
 
-  const r = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': Netlify.env.get('ANTHROPIC_API_KEY'),
-      'anthropic-version': '2023-06-01'
-    },
-    body: JSON.stringify({
-      model: 'claude-haiku-5-5',
-      max_tokens: 400,
-      system: SYS,
-      messages: [{ role: 'user', content: '<frage>' + q + '</frage>' }]
-    })
-  });
-  if (!r.ok) return json({ error: 'upstream' }, 502);
-  const data = await r.json();
-  const text = (data.content || []).map(b => b.text || '').join('').trim();
-  if (/^\s*OFFTOPIC/i.test(text)) return json({ offtopic: true });
-  return json({ text });
+  const key = Netlify.env.get('ANTHROPIC_API_KEY');
+  if (!key) return json({ error: 'no_key', detail: 'ANTHROPIC_API_KEY ist in Netlify nicht gesetzt (neu deployen?).' }, 500);
+
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': key.trim(),
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-5-5',
+        max_tokens: 400,
+        system: SYS,
+        messages: [{ role: 'user', content: '<frage>' + q + '</frage>' }]
+      })
+    });
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok) {
+      const msg = (data.error && data.error.message) || ('HTTP ' + r.status);
+      return json({ error: 'upstream', detail: 'Anthropic: ' + msg }, 502);
+    }
+    const text = (data.content || []).map(b => b.text || '').join('').trim();
+    if (/^\s*OFFTOPIC/i.test(text)) return json({ offtopic: true });
+    return json({ text });
+  } catch (e) {
+    return json({ error: 'crash', detail: String(e && e.message || e) }, 500);
+  }
 };

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rente? Betrifft auch dich!</title>
+<style>
+:root{--bg:#0d0e17;--side:#13152a;--card:#1b1e36;--soft:#262a4a;--fg:#f1f2fa;--mut:#a3a8c7;--acc:#8a96ff;--acc2:#ff9276;--sh:0 10px 30px rgba(0,0,0,.45);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f4f5fc;--side:#e9ebfa;--card:#fff;--soft:#dfe2f7;--fg:#161a33;--mut:#555b7d;--acc:#4c5bff;--acc2:#e8562f;--sh:0 8px 24px rgba(40,50,120,.14)}}
+:root[data-theme="dark"]{--bg:#0d0e17;--side:#13152a;--card:#1b1e36;--soft:#262a4a;--fg:#f1f2fa;--mut:#a3a8c7;--acc:#8a96ff;--acc2:#ff9276}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.5}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.app{min-height:100vh}
+/* Seitenleiste: KI */
+aside{background:var(--side);position:fixed;top:0;right:0;bottom:0;width:min(400px,100vw);z-index:30;display:flex;flex-direction:column;padding:calc(18px + env(safe-area-inset-top,0px)) 16px calc(14px + env(safe-area-inset-bottom,0px));border-left:1px solid var(--soft);transform:translateX(105%);transition:transform .3s}
+aside.open{transform:none;box-shadow:-10px 0 40px rgba(0,0,0,.5)}
+aside h2{margin:0;font-size:1.15rem}aside .hint{color:var(--mut);font-size:.82rem;margin:.2em 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chips button{background:var(--soft);border:0;border-radius:99px;padding:5px 11px;font-size:.78rem}
+.chips button:hover{background:var(--acc);color:#10122a}
+#log{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px 2px}
+.m{max-width:92%;padding:9px 12px;border-radius:14px;font-size:.9rem;white-space:pre-wrap;word-wrap:break-word}
+.m.u{align-self:flex-end;background:var(--acc);color:#10122a;border-bottom-right-radius:4px}
+.m.b{align-self:flex-start;background:var(--card);border-bottom-left-radius:4px}
+.m.n{align-self:flex-start;background:transparent;border:1px dashed var(--acc2);color:var(--acc2)}
+.ask{display:flex;gap:8px;margin-top:10px}
+.ask input{flex:1;min-width:0;background:var(--card);color:var(--fg);border:1px solid var(--soft);border-radius:99px;padding:10px 14px;font:inherit}
+.ask button{background:var(--acc);color:#10122a;border:0;border-radius:99px;padding:0 16px;font-weight:700}
+.ask button:disabled{opacity:.5}
+.fine{color:var(--mut);font-size:.72rem;margin:8px 2px 0}
+.close{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:12px;background:var(--soft);border:0;border-radius:99px;width:32px;height:32px}
+/* Hauptteil */
+main{min-width:0;padding-bottom:60px}
+.hero{padding:56px 24px 34px;background:radial-gradient(120% 90% at 0 0,color-mix(in srgb,var(--acc) 38%,transparent),transparent 60%),radial-gradient(80% 80% at 100% 0,color-mix(in srgb,var(--acc2) 28%,transparent),transparent 55%)}
+h1{font-size:clamp(2.2rem,7vw,4rem);line-height:1.02;margin:.15em 0 .25em;letter-spacing:-.02em;max-width:14ch}
+.hero p{color:var(--mut);max-width:48ch;margin:0 0 18px}
+.cta{background:var(--fg);color:var(--bg);border:0;border-radius:99px;padding:11px 22px;font-weight:700}
+.st{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.st div{background:color-mix(in srgb,var(--card) 80%,transparent);border-radius:12px;padding:8px 14px;font-size:.78rem;color:var(--mut)}
+.st b{display:block;font-size:1.3rem;color:var(--fg)}
+.sec h3{margin:26px 24px 8px;font-size:1.25rem}
+.rw{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 24px 16px;scrollbar-width:thin}
+.t{flex:0 0 min(330px,82vw);scroll-snap-align:start;background:var(--card);border-radius:14px;padding:16px;box-shadow:var(--sh);font-size:.9rem;transition:transform .2s}
+.t:hover{transform:translateY(-4px)}
+.t b.h{display:block;font-size:1rem;margin-bottom:4px}
+.t.w{flex-basis:min(480px,86vw)}
+.mut{color:var(--mut);font-size:.8rem}
+.flow{display:flex;align-items:center;gap:4px;text-align:center;font-size:.75rem;margin-top:10px}
+.flow div{flex:1}.flow .e{font-size:1.9rem;display:block}
+.ar{flex:1.1;height:5px;background:var(--soft);border-radius:3px;overflow:hidden;position:relative}
+.ar i{position:absolute;top:0;left:-30%;width:30%;height:100%;background:var(--acc2);animation:mv 1.8s linear infinite}
+@keyframes mv{to{left:100%}}
+input[type=range]{width:100%;accent-color:var(--acc)}
+.big{font-size:1.6rem;font-weight:800;color:var(--acc)}
+.row{display:flex;flex-wrap:wrap;gap:3px;min-height:40px;font-size:1.4rem}
+.bar{height:12px;background:var(--soft);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width .4s}
+.fl{perspective:800px;cursor:pointer;height:190px;background:none;box-shadow:none;padding:0}
+.fl:hover{transform:none}
+.fi{position:relative;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.fl.on .fi{transform:rotateY(180deg)}
+.fa,.fb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:center;overflow:auto;font-size:.88rem}
+.fa{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#10122a;font-size:1.05rem}.fa small{opacity:.75;margin-top:6px}
+.fb{background:var(--card);transform:rotateY(180deg);box-shadow:var(--sh)}
+.v{background:var(--soft);border:2px solid transparent;border-radius:99px;padding:6px 12px;margin:3px 3px 3px 0;font-size:.82rem}
+.v.on{border-color:var(--acc);background:var(--card)}
+.res{display:flex;align-items:center;gap:8px;font-size:.76rem;margin:4px 0}.res span{width:38%}.res .bar{flex:1}
+details{margin:30px 24px 0;color:var(--mut);font-size:.82rem}summary{cursor:pointer;color:var(--fg);font-weight:600}
+footer{text-align:center;color:var(--mut);font-size:.75rem;margin-top:26px}
+.fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;width:68px;height:68px;border-radius:50%;border:0;padding:0;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:var(--sh);display:grid;place-items:center;animation:bob 3s ease-in-out infinite}
+.fab svg{width:44px;height:44px}
+.fab::after{content:"Frag mich!";position:absolute;right:78px;top:50%;transform:translateY(-50%);background:var(--card);color:var(--fg);padding:6px 12px;border-radius:99px;font-size:.8rem;font-weight:700;white-space:nowrap;box-shadow:var(--sh)}
+@keyframes bob{50%{transform:translateY(-5px)}}
+body.po .fab{display:none}
+.sec .t{background:linear-gradient(160deg,color-mix(in srgb,var(--a) 28%,var(--card)),var(--card) 72%);border-top:3px solid var(--a)}
+.sec .t.fl{background:none;border-top:0}
+.sec h3::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--a);margin-right:8px}
+.sec .big{color:var(--a)}.sec input[type=range]{accent-color:var(--a)}
+.sec .bar i{background:linear-gradient(90deg,var(--a),var(--b))}
+.sec .fa{background:linear-gradient(135deg,var(--a),var(--b))}
+.sec .v.on{border-color:var(--a)}
+.c1{--a:#ff6b6b;--b:#ffb86b}.c2{--a:#22d3ee;--b:#3b82f6}.c3{--a:#c084fc;--b:#f472b6}.c4{--a:#34d399;--b:#a3e635}.c5{--a:#fbbf24;--b:#fb923c}
+.st div{border-top:3px solid var(--acc)}.st div:nth-child(2){border-color:#22d3ee}.st div:nth-child(3){border-color:#34d399}.st div:nth-child(4){border-color:#fbbf24}
+@media (max-width:860px){
+aside{top:auto;height:80vh;width:100%;border-left:0;border-radius:18px 18px 0 0;transform:translateY(105%)}
+aside.open{box-shadow:0 -10px 40px rgba(0,0,0,.5)}
+.hero{padding-top:calc(40px + env(safe-area-inset-top,0px))}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div class="app">
+<aside id="sd" aria-label="Frag die Rente">
+<button class="close" id="cl" aria-label="Schließen">✕</button>
+<h2>🤖 Frag die Rente</h2>
+<p class="hint">Stell eine Frage – eine KI antwortet. Nur Rentenfragen, sonst nichts.</p>
+<div class="chips" id="ch"></div>
+<div id="log" aria-live="polite"></div>
+<div class="ask"><input id="q" placeholder="Deine Frage zur Rente …" maxlength="300" autocomplete="off"><button id="go">Senden</button></div>
+<p class="fine">KI-Antworten können Fehler enthalten. Verbindliche Auskunft gibt die Deutsche Rentenversicherung.</p>
+</aside>
+
+<main>
+<div class="hero">
+<span style="font-size:2.6rem">👵🧑‍🎓</span>
+<h1>Rente? Betrifft auch dich!</h1>
+<p>Was passiert mit dem Geld, das ihr später mal verdient? Entdeckt es Reihe für Reihe, mit Zahlen von 2026. Oder fragt gleich die KI.</p>
+<button class="cta" id="ct">Frage stellen</button>
+<div class="st"><div><b>18,6 %</b>Rentenbeitrag</div><div><b>21 Mio.+</b>Rentner</div><div><b>48 %</b>Rentenniveau bis 2031</div><div><b>120 Mrd. €+</b>Bundeszuschuss 2026</div></div>
+</div>
+
+<div class="sec c1"><h3>So funktioniert die gesetzliche Rente</h3><div class="rw">
+<div class="t"><b class="h">Der Generationenvertrag</b>Wer arbeitet, zahlt Beiträge. Damit werden <b>sofort</b> die Renten der Älteren bezahlt (Umlageverfahren). Es wird nichts angespart, sondern jedes Jahr umverteilt.
+<div class="flow"><div><span class="e">🧑‍💼</span>Beschäftigte</div><div class="ar"><i></i></div><div><span class="e">🏦</span>Kasse</div><div class="ar"><i></i></div><div><span class="e">👵</span>Rentner</div></div>
+<p class="mut">Dazu kommt Steuergeld vom Bund (2026 über 120 Mrd. €).</p></div>
+<div class="t"><b class="h">Rechne selbst</b>Bruttolohn pro Monat
+<input id="lohn" type="range" min="500" max="6000" step="100" value="2500" aria-label="Bruttolohn">
+<p><span class="big" id="l1"></span> Brutto: <b id="l2"></b> € gehen an die Rentenversicherung (18,6 %), davon trägst du <b id="l3"></b> € selbst, den Rest zahlt dein Arbeitgeber.</p>
+<p class="mut">Gilt bis zur Beitragsbemessungsgrenze (2026: 8.450 € im Monat).</p></div>
+<div class="t"><b class="h">Die drei Säulen</b>1️⃣ gesetzliche Rente<br>2️⃣ betriebliche Rente (vom Arbeitgeber)<br>3️⃣ private Vorsorge<br><p class="mut">Die gesetzliche Rente ist die wichtigste Grundlage.</p></div>
+</div></div>
+
+<div class="sec c2"><h3>Der demografische Wandel</h3><div class="rw">
+<div class="t w"><b class="h">Spiel mit dem Regler</b>Beitragszahler pro Rentner
+<input id="s" type="range" min="1" max="4" step="0.1" value="2" aria-label="Beitragszahler pro Rentner">
+<div class="row" id="r"></div>
+<p><span class="big" id="t"></span> Beitragssatz nötig (stark vereinfacht)</p>
+<div class="bar"><i id="b"></i></div>
+<p class="mut">Vereinfachtes Modell: Bei gleichem Rentenniveau muss der Beitrag steigen, wenn weniger einzahlen. Löhne, Steuerzuschuss und Produktivität spielen in echt mit.</p></div>
+<div class="t"><b class="h">Wie schlimm ist es wirklich?</b>Eine Studie (im Auftrag der Initiative Neue Soziale Marktwirtschaft) rechnet langfristig mit nur noch etwa 1,7 bis 1,9 Erwerbstätigen pro Rentner. 2025 waren rund 46 Mio. Menschen erwerbstätig. Die Zahl ist eine <b>Prognose</b> und umstritten.</div>
+<div class="t"><b class="h">Folgen für die Rente</b>📈 Beitragssatz soll 2028 von 18,6 % auf 19,9 % steigen<br>💶 Steuerzuschuss wächst<br>📉 Ohne Gesetz sänke das Rentenniveau bis 2031 auf etwa 47 %, daher wurden 48 % festgelegt<br>⏳ Regelaltersgrenze steigt auf 67 (ab Jahrgang 1964)</div>
+</div></div>
+
+<div class="sec c3"><h3>Fakten zum Umdrehen</h3><div class="rw">
+<div class="t fl" tabindex="0" role="button"><div class="fi"><div class="fa"><b>Was ist das „Rentenniveau“?</b><small>Tippen zum Umdrehen</small></div><div class="fb">Verhältnis einer Standardrente (45 Beitragsjahre, Durchschnittsverdienst) zum Durchschnittseinkommen. Aktuell 48 %. Es heißt <b>nicht</b>, dass man 48 % seines Gehalts bekommt.</div></div></div>
+<div class="t fl" tabindex="0" role="button"><div class="fi"><div class="fa"><b>Wie viel steigen die Renten?</b><small>Tippen zum Umdrehen</small></div><div class="fb">Im Juli 2026 stiegen die Renten um 4,24 %. Die Erhöhung hängt von der Lohnentwicklung ab.</div></div></div>
+<div class="t fl" tabindex="0" role="button"><div class="fi"><div class="fa"><b>Was ist die Rentenkommission?</b><small>Tippen zum Umdrehen</small></div><div class="fb">Eine Expertengruppe der Bundesregierung. Sie legte am 23. Juni 2026 33 Empfehlungen vor, z. B. eine zusätzliche kapitalgedeckte Rente (Geld wird am Kapitalmarkt angelegt) und längeres Arbeiten.</div></div></div>
+<div class="t fl" tabindex="0" role="button"><div class="fi"><div class="fa"><b>Rentner dürfen dazuverdienen</b><small>Tippen zum Umdrehen</small></div><div class="fb">Mit der „Aktivrente“ können Rentner in einem Job bis zu 2.000 € im Monat steuerfrei verdienen.</div></div></div>
+</div></div>
+
+<div class="sec c4"><h3>Und wie machen es andere Länder?</h3><div class="rw">
+<div class="t w"><div id="lb"></div><p id="lc" style="margin:8px 0 0"></p><p class="mut">Vereinfacht dargestellt. Die Systeme sind komplex und ändern sich.</p></div>
+</div></div>
+
+<div class="sec c5"><h3>Sollten sich junge Menschen schon heute damit beschäftigen?</h3><div class="rw">
+<div class="t w"><b class="h">👍 Dafür</b>• Wir zahlen jahrzehntelang ein und bekommen die Rente erst spät.<br>• Wer früh privat vorsorgt, profitiert von Zinsen über viele Jahre.<br>• Wir wählen bald mit und entscheiden, wie das System aussieht.<br>• Die Reformen von heute betreffen vor allem uns.<br><br><b class="h">👎 Dagegen</b>• Mit 15 gibt es dringendere Themen (Schule, Ausbildung).<br>• Die Politik ändert Regeln oft, Planung ist schwer.<br>• Wenig Einkommen, wenig Spielraum zum Sparen.</div>
+<div class="t w"><b class="h">Deine Meinung: Welche Maßnahme ist am fairsten?</b><div id="vb"></div><div id="vr"></div><p class="mut">Nur auf deinem Gerät, keine echte Umfrage.</p></div>
+<div class="t"><b class="h">Fazit</b>Du musst kein Experte werden. Aber wer die Grundlagen kennt, kann mitreden, früh planen und merkt, wenn Politik mit Zahlen spielt. Rente betrifft alle Generationen.</div>
+</div></div>
+
+<details><summary>Quellen</summary><ul>
+<li>Bundesministerium für Arbeit und Soziales: Rentenkommission 2026 / Faktenpapier (Juni 2026)</li>
+<li>Deutscher Bundestag, Drucksache 21/7774 (31.08.2026)</li>
+<li>dpa-Bericht zur Rentenkommission, 22.06.2026 (volksstimme.de)</li>
+<li>gegen-hartz.de: „Diese Zahl soll die Rente sichern“</li>
+<li>Berliner Kurier / Yahoo Nachrichten: Änderungen ab 2026</li>
+<li>OECD: Pensions at a Glance (Ländervergleich)</li>
+<li>Sociale Verzekeringsbank (svb.nl): AOW in den Niederlanden</li>
+<li>Pensionsmyndigheten (pensionsmyndigheten.se): Rente in Schweden</li>
+<li>Pensionsversicherungsanstalt (pv.at): Pension in Österreich</li></ul></details>
+<footer>Ein Beitrag zum Wettbewerb econo-me · Thema Rente</footer>
+</main></div>
+<button class="fab" id="fab" aria-label="Frag die Rente: KI-Chat öffnen"><svg viewBox="0 0 48 48" aria-hidden="true"><line x1="24" y1="4" x2="24" y2="11" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="4" r="3" fill="#ffd34d"/><rect x="3" y="22" width="5" height="10" rx="2.5" fill="#fff"/><rect x="40" y="22" width="5" height="10" rx="2.5" fill="#fff"/><rect x="8" y="11" width="32" height="28" rx="10" fill="#fff"/><rect x="12" y="16" width="24" height="17" rx="7" fill="#1b1e36"/><circle cx="19" cy="23" r="3" fill="#6ff2ff"/><circle cx="29" cy="23" r="3" fill="#6ff2ff"/><path d="M19 28.5q5 3 10 0" stroke="#6ff2ff" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+// Karten umdrehen
+document.querySelectorAll('.fl').forEach(function(f){f.onclick=function(){f.classList.toggle('on')};f.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();f.classList.toggle('on')}}});
+// Lohn
+function L(){var v=+$('lohn').value;$('l1').textContent=v.toLocaleString('de')+' €';$('l2').textContent=(v*.186).toFixed(0);$('l3').textContent=(v*.093).toFixed(0)}
+$('lohn').oninput=L;L();
+// Demografie (stark vereinfacht)
+function U(){var n=+$('s').value,h='';for(var i=0;i<Math.round(n);i++)h+='<span>🧑‍💼</span>';
+$('r').innerHTML=h+'<span>➡️👵</span>';var rate=18.6*(2.2/n);
+$('t').textContent=n.toFixed(1).replace('.',',')+' pro Rentner: ca. '+rate.toFixed(1).replace('.',',')+' %';
+$('b').style.width=Math.min(rate/40*100,100)+'%'}
+$('s').oninput=U;U();
+// Abstimmung
+var opts=['Höhere Beiträge','Niedrigeres Rentenniveau','Später in Rente','Mehr Steuergeld','Kapitalrente / Fonds'],votes=[0,0,0,0,0],my=-1;
+function V(){$('vb').innerHTML=opts.map(function(o,i){return '<button class="v'+(my==i?' on':'')+'" onclick="pick('+i+')">'+o+'</button>'}).join('');
+var t=votes.reduce(function(a,b){return a+b},0)||1;
+$('vr').innerHTML=my<0?'':opts.map(function(o,i){return '<div class="res"><span>'+o+'</span><div class="bar"><i style="width:'+(votes[i]/t*100)+'%"></i></div></div>'}).join('')}
+function pick(i){if(my>=0)votes[my]--;my=i;votes[i]++;V()}V();
+// Länder
+var L2=[
+{n:'🇳🇱 Niederlande',t:'<b>Zwei starke Teile:</b> Alle Einwohner bekommen eine Grundrente (AOW), deren Höhe von den Jahren im Land abhängt. Dazu kommt fast immer eine <b>Betriebsrente</b> über Pensionsfonds, die am Kapitalmarkt anlegen. Das Rentenalter ist an die Lebenserwartung gekoppelt (aktuell 67). Das System wird gerade umgebaut.'},
+{n:'🇸🇪 Schweden',t:'<b>Ein Teil wird selbst angelegt:</b> Der größte Teil fließt wie bei uns in ein Umlagesystem, ein kleinerer Teil in Fonds, die man selbst wählen kann („Prämienrente“). Die Rente passt sich automatisch an die Wirtschaftslage an.'},
+{n:'🇦🇹 Österreich',t:'<b>Ähnlich wie Deutschland, aber großzügiger:</b> Beschäftigte zahlen ein und finanzieren damit die heutigen Renten. Die Beiträge sind höher als bei uns, die Renten im Verhältnis zum letzten Gehalt meist ebenfalls. Es kommt auch viel Steuergeld dazu.'}],lc=0;
+function LB(){$('lb').innerHTML=L2.map(function(o,i){return '<button class="v'+(lc==i?' on':'')+'" onclick="lp('+i+')">'+o.n+'</button>'}).join('');$('lc').innerHTML=L2[lc].t}
+function lp(i){lc=i;LB()}LB();
+
+// ---- KI-Fragespalte ----
+var NO='Dazu kann ich nichts sagen: Hier geht es nur um Fragen zur Rente. Frag mich zum Beispiel, wie die Rente finanziert wird oder wann du in Rente gehst.';
+var log=$('log'),busy=false;
+function add(c,t){var d=document.createElement('div');d.className='m '+c;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+add('b','Hallo! Ich beantworte deine Fragen rund um die Rente.');
+['Wie funktioniert der Generationenvertrag?','Wann gehe ich in Rente?','Lohnt sich private Vorsorge?'].forEach(function(s){var b=document.createElement('button');b.textContent=s;b.onclick=function(){$('q').value=s;ask()};$('ch').appendChild(b)});
+async function ask(){
+var q=$('q').value.trim();if(!q||busy)return;
+$('q').value='';add('u',q);
+busy=true;$('go').disabled=true;var m=add('b','…');
+try{
+var res=await fetch('/.netlify/functions/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:q})});
+var d=await res.json().catch(function(){return {}});
+if(res.status===429){m.className='m n';m.textContent='Zu viele Fragen auf einmal. Warte kurz und versuch es nochmal.'}
+else if(!res.ok){m.className='m n';m.textContent='Die KI ist gerade nicht erreichbar. Versuch es bitte später nochmal.'}
+else if(d.offtopic){m.className='m n';m.textContent=NO}
+else{m.textContent=d.text||'Dazu habe ich keine Antwort.'}
+log.scrollTop=log.scrollHeight
+}catch(e){m.className='m n';m.textContent='Die Antwort hat nicht geklappt. Versuch es bitte nochmal.'}
+busy=false;$('go').disabled=false;$('q').focus()}
+$('go').onclick=ask;$('q').onkeydown=function(e){if(e.key==='Enter')ask()};
+function op(o){$('sd').classList.toggle('open',o);document.body.classList.toggle('po',o);if(o)$('q').focus()}
+$('fab').onclick=function(){op(true)};$('cl').onclick=function(){op(false)};
+$('ct').onclick=function(){op(true)};
+</script></body></html>

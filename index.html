@@ -201,7 +201,7 @@ try{
 var res=await fetch('/.netlify/functions/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:q})});
 var d=await res.json().catch(function(){return {}});
 if(res.status===429){m.className='m n';m.textContent='Zu viele Fragen auf einmal. Warte kurz und versuch es nochmal.'}
-else if(!res.ok){m.className='m n';m.textContent='Die KI ist gerade nicht erreichbar. Versuch es bitte später nochmal.'}
+else if(!res.ok){m.className='m n';m.textContent='Die KI ist gerade nicht erreichbar. Versuch es bitte später nochmal.'+(d.detail?' ['+d.detail+']':' [HTTP '+res.status+']')}
 else if(d.offtopic){m.className='m n';m.textContent=NO}
 else{m.textContent=d.text||'Dazu habe ich keine Antwort.'}
 log.scrollTop=log.scrollHeight
